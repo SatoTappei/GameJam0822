@@ -20,12 +20,15 @@ public class PlayerShoot : MonoBehaviour
     
     [SerializeField]
     [Tooltip("ËŒ‚‚ğs‚¦‚é‰ñ”")]
-    int _shootLimit;
+    int _shootLimit = 0;
 
     [Tooltip("ËŒ‚‚ğs‚Á‚½‰ñ”")]
     int _shootCount;
-    
-    public Vector3 _shootPos;
+
+    [Tooltip("ËŒ‚‚ÌSE")]
+    AudioSource _audio;
+
+    Vector3 _shootPos;
     
     LineRenderer _line;
 
@@ -33,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         _line = GetComponent<LineRenderer>();
+        _audio = GetComponent<AudioSource>();
     }
 
 
@@ -110,6 +114,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (_isShoot && _shootCount <= _shootLimit)
         {
+            _audio.Play();
             _shootCount++;
             Instantiate(_bullet, _shootPos + transform.position, transform.rotation);
         }

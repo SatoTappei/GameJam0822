@@ -8,11 +8,15 @@ public class BulletController : MonoBehaviour
     [Tooltip("’e‚Ì‘¬“x")]
     float _bulletSpeed;
 
+    [Tooltip("’e‚Ì‘¬“x")]
+    AudioSource _audio;
+
     Rigidbody _rb;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _audio = GetComponent<AudioSource>();
 
         BulletMove();
     }
@@ -31,5 +35,7 @@ public class BulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _audio.Play();
     }
 }
