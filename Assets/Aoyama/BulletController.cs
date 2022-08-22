@@ -18,12 +18,6 @@ public class BulletController : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        BulletDestroy();
-    }
-
-
     /// <summary>弾の動きを管理するメソッド</summary>
     private void BulletMove()
     {  
@@ -31,10 +25,11 @@ public class BulletController : MonoBehaviour
     }
 
 
-    /// <summary>弾の破壊を管理するメソッド</summary>
-    private void BulletDestroy()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
-
 }

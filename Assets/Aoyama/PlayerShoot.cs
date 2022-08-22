@@ -68,7 +68,7 @@ public class PlayerShoot : MonoBehaviour
 
 
         _line.SetPosition(0, transform.position);
-        _line.SetPosition(1, _shootPos);
+        _line.SetPosition(1, _shootPos + transform.position);
     }
 
 
