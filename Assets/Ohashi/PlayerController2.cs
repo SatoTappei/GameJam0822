@@ -22,4 +22,8 @@ public class PlayerController2 : MonoBehaviour
         _dir = new Vector3(0, _moveX, _moveZ);
 
     }
+    private void OnDisable()
+    {
+        _rb.velocity = Vector3.zero;
+    }
 }

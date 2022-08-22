@@ -46,4 +46,8 @@ public class Playercontrolle : MonoBehaviour
             _hp--;
         }
     }
+    private void OnDisable()
+    {
+        _rb.velocity = Vector3.zero;
+    }
 }
