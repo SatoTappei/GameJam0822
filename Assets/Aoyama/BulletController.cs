@@ -31,6 +31,8 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        gameObject.layer = 6;
+
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject, 0.7f);
