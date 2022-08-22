@@ -33,9 +33,9 @@ public class Playercontrolle : MonoBehaviour
     }
     void Move()
     {
-        float _moveZ = Input.GetAxisRaw("Horizontal1");
-        float _moveX = Input.GetAxisRaw("Vertical1");
-        _dir = new Vector3(0, _moveX, _moveZ);
+        float _moveX = Input.GetAxisRaw("Horizontal1");
+        float _moveY = Input.GetAxisRaw("Vertical1");
+        _dir = new Vector3(_moveX, _moveY, 0);
     }
     void Hit()
     {
