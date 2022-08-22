@@ -12,25 +12,40 @@ public class PlayerShoot : MonoBehaviour
     [Tooltip("弾のプレハブ")]
     GameObject _bullet;
 
-    [SerializeField]
-    [Tooltip("射撃を行える回数")]
-    int _shootLimit;
 
     [SerializeField]
     [Tooltip("プレイヤー１かどうか")]
     bool _isPlayer1;
 
+    [Tooltip("射撃を行える回数")]
+    int _shootLimit;
+
+    [Tooltip("射撃を行った回数")]
     int _shootCount;
     
     public Vector3 _shootPos;
     
     LineRenderer _line;
 
+
+    private void Start()
+    {
+        _line = GetComponent<LineRenderer>();
+    }
+
+
     private void OnEnable()
     {
         _shootCount = 0;
+        _shootLimit++;
 
-        _line = GetComponent<LineRenderer>();
+        _line.enabled = true;
+    }
+
+
+    private void OnDisable()
+    {
+        _line.enabled = false;    
     }
 
 
@@ -85,7 +100,7 @@ public class PlayerShoot : MonoBehaviour
             _isShoot = Input.GetKeyDown(KeyCode.RightShift);
         }
 
-        if (_isShoot)
+        if (_isShoot && _shootCount <= _shootLimit)
         {
             _shootCount++;
             Instantiate(_bullet, _shootPos, transform.rotation);
