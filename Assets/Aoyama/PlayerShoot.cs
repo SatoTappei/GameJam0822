@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("射撃を行うポイント")]
-    Vector3[] _shootPositions;
+    [Tooltip("射撃を行う距離")]
+    float _shootPosLength = 10;
 
     [SerializeField]
     [Tooltip("弾のプレハブ")]
@@ -17,29 +17,30 @@ public class PlayerShoot : MonoBehaviour
     int _shootLimit;
 
     [SerializeField]
-    [Tooltip("射撃を行えるインターバル")]
-    float _shootInterval;
-
-    [SerializeField]
     [Tooltip("プレイヤー１かどうか")]
     bool _isPlayer1;
 
     int _shootCount;
     
-    Vector3 _shootPos;
+    public Vector3 _shootPos;
     
-    float _timer;
-
+    LineRenderer _line;
 
     private void OnEnable()
     {
         _shootCount = 0;
+
+        _line = GetComponent<LineRenderer>();
     }
 
 
     private void Update()
     {
         Shoot();
+
+        ShootPosChange();
+
+        transform.up = _shootPos;
     }
 
 
@@ -52,12 +53,22 @@ public class PlayerShoot : MonoBehaviour
         {
             x = Input.GetAxisRaw("Horizontal1");
             y = Input.GetAxisRaw("Vertical1");
+
+            Mathf.Abs(_shootPosLength);
+
+            _shootPos = new Vector3(_shootPosLength, y * _shootPosLength, x * _shootPosLength);
         }
         else
         {
             x = Input.GetAxisRaw("Horizontal2");
             y = Input.GetAxisRaw("Vertical2");
+
+            _shootPos = new Vector3(-_shootPosLength, y * _shootPosLength, x * _shootPosLength);
         }
+
+
+        _line.SetPosition(0, transform.position);
+        _line.SetPosition(1, _shootPos);
     }
 
 
