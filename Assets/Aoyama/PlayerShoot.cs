@@ -16,7 +16,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     [Tooltip("プレイヤー１かどうか")]
     bool _isPlayer1;
-
+    
+    [SerializeField]
     [Tooltip("射撃を行える回数")]
     int _shootLimit;
 
@@ -39,7 +40,10 @@ public class PlayerShoot : MonoBehaviour
         _shootCount = 0;
         _shootLimit++;
 
-        _line.enabled = true;
+        if (_line)
+        {
+            _line.enabled = true;
+        }
     }
 
 
@@ -103,7 +107,7 @@ public class PlayerShoot : MonoBehaviour
         if (_isShoot && _shootCount <= _shootLimit)
         {
             _shootCount++;
-            Instantiate(_bullet, _shootPos, transform.rotation);
+            Instantiate(_bullet, _shootPos + transform.position, transform.rotation);
         }
     }
 }
