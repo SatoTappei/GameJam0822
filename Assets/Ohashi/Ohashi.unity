@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 339499004}
   - component: {fileID: 339499003}
   m_Layer: 5
-  m_Name: hp2
+  m_Name: hptext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: -37}
+  m_AnchoredPosition: {x: 391, y: 13}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339499003
@@ -263,11 +263,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 78
+    m_FontSize: 127
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 78
+    m_MaxSize: 127
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 770109105}
   - component: {fileID: 770109104}
   m_Layer: 5
-  m_Name: hp22
+  m_Name: hptext2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,7 +493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: -37}
+  m_AnchoredPosition: {x: 374, y: 1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770109104
@@ -518,11 +518,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 78
+    m_FontSize: 127
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 78
+    m_MinSize: 0
+    m_MaxSize: 127
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 1062685180}
   - component: {fileID: 1062685179}
   m_Layer: 5
-  m_Name: hp (1)
+  m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 1904021985}
   - component: {fileID: 1904021984}
   m_Layer: 5
-  m_Name: hp
+  m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1225,6 +1225,14 @@ PrefabInstance:
       propertyPath: _text
       value: 
       objectReference: {fileID: 1923091989}
+    - target: {fileID: 2252485221561947604, guid: 0581ebdf1f396d5469d1d46d60db3ddd, type: 3}
+      propertyPath: _hpText
+      value: 
+      objectReference: {fileID: 770109104}
+    - target: {fileID: 2252485221561947604, guid: 0581ebdf1f396d5469d1d46d60db3ddd, type: 3}
+      propertyPath: _gameoverText
+      value: 
+      objectReference: {fileID: 1923091989}
     - target: {fileID: 2252485221561947607, guid: 0581ebdf1f396d5469d1d46d60db3ddd, type: 3}
       propertyPath: m_Name
       value: player2
@@ -1288,6 +1296,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471178856408009147, guid: c2e79381aba1fba4dbfd57bb2c0feaa2, type: 3}
       propertyPath: _text
+      value: 
+      objectReference: {fileID: 1923091989}
+    - target: {fileID: 4471178856408009147, guid: c2e79381aba1fba4dbfd57bb2c0feaa2, type: 3}
+      propertyPath: _hpText
+      value: 
+      objectReference: {fileID: 339499003}
+    - target: {fileID: 4471178856408009147, guid: c2e79381aba1fba4dbfd57bb2c0feaa2, type: 3}
+      propertyPath: _gameoverText
       value: 
       objectReference: {fileID: 1923091989}
     m_RemovedComponents: []
