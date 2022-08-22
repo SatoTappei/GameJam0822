@@ -8,7 +8,10 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] float _moveSpeed;
     [Header("playerのヒットポイント")]
     [Tooltip("playerのヒットポイント")] [SerializeField] int _hp = 2;
-    [SerializeField] Text _text;
+
+    [SerializeField] Text _gameoverText;
+    [SerializeField] Text _hpText;
+
     Vector3 _dir = new Vector3(0, 0, 0);
     Rigidbody _rb;
     void Start()
@@ -23,6 +26,7 @@ public class PlayerController2 : MonoBehaviour
     {
         Move();//移動の入力
         Hit();
+        _hpText.text = _hp.ToString();
     }
     void Move()
     {
@@ -34,7 +38,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (_hp <= 0)
         {
-            _text.enabled = true;
+            _gameoverText.enabled = true;
         }
     }
     private void OnCollisionEnter(Collision collision)
