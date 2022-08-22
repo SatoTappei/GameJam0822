@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -49,7 +50,10 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnDisable()
     {
-        _line.enabled = false;    
+        _line.enabled = false;
+
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        bullets.ToList().ForEach(b => Destroy(b));
     }
 
 
