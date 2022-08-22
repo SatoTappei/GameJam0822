@@ -11,75 +11,59 @@ public class PlaySceneManager : MonoBehaviour
     enum GameState
     {
         Standby,
-        Fire,
+        Play,
+        Result,
     }
 
     /// <summary>プレイヤー1の移動を制御するスクリプト</summary>
-    [SerializeField] Controller _player1MoveController;
+    [SerializeField] Playercontrolle _player1MoveController;
     /// <summary>プレイヤー1の攻撃を制御するスクリプト</summary>
-    [SerializeField] Fire _player1FireController;
+    [SerializeField] PlayerShoot _player1FireController;
     /// <summary>プレイヤー2の移動を制御するスクリプト</summary>
-    [SerializeField] Controller _player2MoveController;
+    [SerializeField] PlayerController2 _player2MoveController;
     /// <summary>プレイヤー2の攻撃を制御するスクリプト</summary>
-    [SerializeField] Fire _player2FireController;
-
+    [SerializeField] PlayerShoot _player2FireController;
+    /// <summary>ターンのリミット</summary>
+    [SerializeField] float _turnLimit;
     /// <summary>現在の状態</summary>
     GameState _currentState = GameState.Standby;
 
-    IEnumerator Start()
+    /// <summary>ゲームプレイに移行</summary>
+    public void TransitionGamePlay() => _currentState = GameState.Play;
+    /// <summary>リザルトに移行</summary>
+    public void TransitionResult() => _currentState = GameState.Result;
+
+    float _timer;
+
+    void Start()
     {
-        // ゲームスタートのボタンが押されたら
-        yield return null;
+        _player1MoveController.enabled = false;
+        _player2FireController.enabled = false;
+        _currentState = GameState.Play;
     }
 
     void Update()
     {
-        //switch (_currentState)
-        //{
-        //    case GameState.Standby:
-        //        break;
-        //    case GameState.Player1TurnStart:
-        //        // プレイヤー1が弾を撃てる
-        //        _player1FireController.enabled = true;
-        //        // プレイヤー2が動ける
-        //        _player1MoveController.enabled = true;
-        //        // Player1のターンへ
-        //        _currentState = GameState.Player1Turn;
-        //        break;
-        //    case GameState.Player1Turn:
-        //        // プレイヤー1は動けない・弾を撃てない
-        //        // プレイヤー2が動ける
-        //        // 被弾、もしくは弾が止まったら次へ
-        //        break;
-        //    case GameState.Player1TurnEnd:
-        //        // 結果の判定、プレイヤーが被弾していたら
-        //    case GameState.Player2TurnStart:
-        //        // Pleyer1
-        //        // プレイヤー2が弾を撃てる
-        //        // プレイヤー1が動ける
-        //        break;
-        //    case GameState.Player2Turn:
-        //        // プレイヤー2が動けない・弾を撃てない
-        //        // プレイヤー1が動ける
-        //        // 被弾、もしくは弾が止まったら次へ
-        //        break;
-        //    case GameState.Player2TurnEnd:
-        //        // 結果の判定
-        //        break;
-        //    case GameState.TurnEnd:
-        //        break;
-        //}
-    }
-
-    /// <summary>ゲームをプレイ中</summary>
-    IEnumerator GamePlay()
-    {
-        while (true)
+        switch (_currentState)
         {
+            case GameState.Standby:
+                // タイトル中
+            break;
+            case GameState.Play:
+                _timer += Time.deltaTime;
+                if (_timer > _turnLimit)
+                {
+                    _timer = 0;
+                    _player1MoveController.enabled = !_player1MoveController.enabled;
+                    _player2MoveController.enabled = !_player2MoveController.enabled;
+                    _player1FireController.enabled = !_player1FireController.enabled;
+                    _player2FireController.enabled = !_player2FireController.enabled;
+                }
+                break;
+            case GameState.Result:
+                // ゲームのリザルト
+            break;
 
-            yield return new WaitUntil(() => _currentState == GameState.Fire);
         }
     }
-
-
 }
