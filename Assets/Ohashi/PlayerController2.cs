@@ -32,7 +32,7 @@ public class PlayerController2 : MonoBehaviour
     {
         float _moveZ = Input.GetAxisRaw("Horizontal2");
         float _moveX = Input.GetAxisRaw("Vertical2");
-        _dir = new Vector3(0, _moveX, _moveZ);
+        _dir = new Vector3(_moveZ, _moveX, 0);
     }
     void Hit()
     {
