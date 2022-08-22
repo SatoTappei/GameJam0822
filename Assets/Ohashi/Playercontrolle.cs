@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Playercontrolle : MonoBehaviour
@@ -9,7 +10,7 @@ public class Playercontrolle : MonoBehaviour
     [Tooltip("移動スピード")] [SerializeField] float _moveSpeed;
     [Header("playerのヒットポイント")]
     [Tooltip("playerのヒットポイント")] [SerializeField] int _hp = 2;
-
+    [SerializeField] Text _text;
     Vector3 _dir = new Vector3(0, 0, 0);
     Rigidbody _rb;
     
@@ -36,7 +37,7 @@ public class Playercontrolle : MonoBehaviour
     {
         if(_hp <= 0)
         {
-            SceneManager.LoadScene("result画面のscene名");
+            _text.enabled = true;
         }
     }
     private void OnCollisionEnter(Collision collision)
