@@ -46,7 +46,7 @@ public class Playercontrolle : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "’e‚Ìƒ^ƒO–¼")
+        if(collision.gameObject.tag == "Bullet")
         {
             _hp--;
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ゲーム本編の進行を管理・制御する
@@ -25,6 +26,8 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField] PlayerShoot _player2FireController;
     /// <summary>ターンのリミット</summary>
     [SerializeField] float _turnLimit;
+    /// <summary>一方通行の壁</summary>
+    [SerializeField] Transform _wall;
     /// <summary>現在の状態</summary>
     GameState _currentState = GameState.Standby;
 
@@ -58,6 +61,7 @@ public class PlaySceneManager : MonoBehaviour
                     _player2MoveController.enabled = !_player2MoveController.enabled;
                     _player1FireController.enabled = !_player1FireController.enabled;
                     _player2FireController.enabled = !_player2FireController.enabled;
+                    _wall.transform.Rotate(new Vector3(0, 180, 0));
                 }
                 break;
             case GameState.Result:
@@ -65,5 +69,10 @@ public class PlaySceneManager : MonoBehaviour
             break;
 
         }
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
