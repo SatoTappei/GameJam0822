@@ -33,7 +33,7 @@ public class BulletController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.7f);
         }
 
         _audio.Play();

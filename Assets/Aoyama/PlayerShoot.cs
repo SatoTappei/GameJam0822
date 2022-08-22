@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class PlayerShoot : MonoBehaviour
     [Tooltip("弾のプレハブ")]
     GameObject _bullet;
 
-
     [SerializeField]
     [Tooltip("プレイヤー１かどうか")]
     bool _isPlayer1;
@@ -21,6 +21,10 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     [Tooltip("射撃を行える回数")]
     int _shootLimit = 0;
+
+    [SerializeField]
+    [Tooltip("射撃を行える回数を表示するText")]
+    Text _bulletText;
 
     [Tooltip("射撃を行った回数")]
     int _shootCount;
@@ -48,6 +52,11 @@ public class PlayerShoot : MonoBehaviour
         if (_line)
         {
             _line.enabled = true;
+        }
+
+        if (_isPlayer1)
+        {
+            _bulletText.text = _shootLimit.ToString();
         }
     }
 
@@ -112,7 +121,7 @@ public class PlayerShoot : MonoBehaviour
             _isShoot = Input.GetKeyDown(KeyCode.RightShift);
         }
 
-        if (_isShoot && _shootCount <= _shootLimit)
+        if (_isShoot && _shootCount < _shootLimit)
         {
             _audio.Play();
             _shootCount++;
